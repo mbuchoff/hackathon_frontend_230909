@@ -1,0 +1,18 @@
+---
+    on:
+      pull_request:
+        branches:
+            - main
+     
+    jobs:
+      markdownlint:
+        uses: snohio/github-workflows/.github/workflows/markdown-lint.yml@main
+      hadolint:
+        uses: actions/code-scanning/hadolint.yml@main
+
+      integration-azure:
+        runs-on: ubuntu-latest
+        needs:
+            - markdownlint
+            - hadolint
+      
