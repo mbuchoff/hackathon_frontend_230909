@@ -5,6 +5,7 @@ import axios from 'axios'
 import Home from './pages/Home'
 import ChooseGame from './pages/ChooseGame'
 import Play from './pages/Play'
+import ProtectedRoute from './components/ProtectedRoute'
 
 
 import 'bootstrap/dist/js/bootstrap.bundle'
@@ -57,7 +58,9 @@ function App() {
 
           <Route path="/choose-game" element={<ChooseGame />} />
 
-          <Route path="/play" element={<Play />} />
+          <Route element = {<ProtectedRoute />}>
+            <Route path="/play" element={<Play />} />
+          </Route>
 
         </Routes>
       </div>
