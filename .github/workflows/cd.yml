@@ -1,5 +1,5 @@
 ---
-    name: Build and deploy .NET Core app to Azure
+    name: Build and Deploy
     on:
         push:
             branches:
