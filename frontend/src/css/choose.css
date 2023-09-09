@@ -1,0 +1,26 @@
+.questionMenu{
+    background-color: rgb(131, 250, 190);
+    padding:4px 8px 16px 8px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    margin-right: 16px;
+}
+
+.questionLabel{
+    margin-right:1rem;
+}
+
+.flexChoose{
+   
+    display: flex;
+  
+
+    position: relative;
+    flex-direction:row;
+    column-gap: 16px;
+    
+    min-height:fit-content;
+    justify-content: center;
+    margin: 24px 0px 0 0px;
+
+}

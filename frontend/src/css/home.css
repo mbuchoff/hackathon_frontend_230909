@@ -1,0 +1,68 @@
+
+
+
+ body{
+    margin:0;
+ }
+
+ h1{
+    font-size:2rem
+}
+h2{
+    font-size:1.5rem
+}
+h3{
+    font-size:1.3rem
+}
+h4{
+    font-size:1rem
+}
+h5{
+    font-size:.8rem
+}
+h6{
+    font-size:.7rem
+}
+
+p{
+    font-size:1.2rem;
+}
+
+
+.wholeScreen{
+    
+    min-width:fit-content
+}
+
+.wholeDefault{
+    margin:24px;
+}
+
+.myHeader{
+    padding: 12px 24px 8px;
+
+}
+
+.verticalText{
+    align-items: center;
+    display: flex;
+  
+    width:fit-content;
+  }
+
+  @media(max-width:768px){
+
+    .navMenu{
+      margin-bottom:8px;
+    }
+}
+
+.navMenu{
+    text-decoration: none;
+    color:black;
+    font-size:1.5rem;
+  }
+
+.navMenu:hover{
+    color:#0d6efd;
+}

@@ -1,0 +1,7 @@
+.loadingScreen{
+        
+    margin: 0 var(--margin1) var(--margin1) var(--margin1);
+    height: fit-content;
+    font-size:2rem;
+}
+
