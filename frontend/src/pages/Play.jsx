@@ -7,24 +7,13 @@ import '../css/play.css'
 
 const Play = ()=>{
 
-    const [gameReady, setReady] = useState(true) 
-    const [success, setSuccess] = useState(true) 
+    const [gameReady, setReady] = useState(false) 
+    const [success, setSuccess] = useState(false) 
     const [index, setIndex] = useState(0) 
     const [chosen, setChosen] = useState("none") 
     const endQuiz = useRef(false)
 
-    const [questionList, setQuestionList] = useState([
-        {
-            question: 'walking',
-            choices: ['hi', '2' , '3' , '4'],
-            answer: 0,
-        },
-        {
-            question: 'running',
-            choices: ['hi', '2' , '3' , '4'],
-            answer: 1,
-        }
-    ])
+    const [questionList, setQuestionList] = useState([])
 
     const [score, setScore] = useState(0)
 
@@ -84,9 +73,6 @@ const Play = ()=>{
         finishQuestion()
     }
 
-
-
-
     const getGame =()=>{
 
         const baseUrl = 'http://localhost:9999/game'
@@ -96,14 +82,15 @@ const Play = ()=>{
                 language: language,
                 quantity: numQuestions
             }
+ 
         )
 
         request.then(response=>{
             if(response.status === 200){
                 setSuccess(true)
 
-                //setQuestionList(response.data.game_result.questions)
-                console.log(response.data)
+                setQuestionList(response.data.game_result.questions)
+                
               }
 
             else{
@@ -111,6 +98,9 @@ const Play = ()=>{
             }
 
             setReady(true)
+        })
+        .catch(error=> {
+            console.log(error)
         })
 
     }
@@ -120,8 +110,6 @@ const Play = ()=>{
         
         // eslint-disable-next-line
       }, [])
-
-
 
 
     if(!gameReady){

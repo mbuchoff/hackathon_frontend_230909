@@ -12,7 +12,7 @@ const ChooseGame = ()=>{
 
     const [quantity, setQuantity] = useState(10)
 
-    const [language, setLanguage] = useState('English')
+    const [language, setLanguage] = useState('en')
 
     const changeNumber=(e)=>{
 
@@ -64,7 +64,7 @@ const ChooseGame = ()=>{
 
         <Select style={{width: '500px'}} menuPortalTarget={document.body}
                         defaultValue={
-                          'en'
+                          'es'
                         }
                         options={languageList}
                         isSearchable = {true}
