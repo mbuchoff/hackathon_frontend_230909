@@ -8,9 +8,9 @@ const ProtectedRoute = () =>{
 
     if(location.state === undefined || location.state === null)
         enabled = false
-    else if(location.state.number === undefined || location.state.language === undefined)
+    else if(location.state.number === undefined || location.state.language === undefined || location.state.displayLang === undefined)
         enabled = false
-    else if(location.state.number === null || location.state.language === null)
+    else if(location.state.number === null || location.state.language === null || location.state.displayLang === null)
         enabled = false
     else
         enabled = true

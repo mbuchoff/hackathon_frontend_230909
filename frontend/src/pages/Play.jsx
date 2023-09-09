@@ -25,6 +25,7 @@ const Play = ()=>{
 
     const numQuestions = location.state.number
     const language = location.state.language
+    const displayLang = location.state.displayLang
 
 
     const nextQuestion =()=>{
@@ -138,11 +139,11 @@ const Play = ()=>{
                 {questionList[index].question} 
             </div>
 
-            <div style={{fontSize: '1.25rem'}} className=" ">
+            <div style={{fontSize: '1.25rem', marginLeft:'16px'}} className=" ">
                         
-                {language}
+                {displayLang}
                 <br/><br/>
-                {score} / {questionList.length}
+                {score}&nbsp;/&nbsp;{questionList.length}
             
             </div>
         </div>

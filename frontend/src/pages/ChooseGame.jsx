@@ -12,7 +12,9 @@ const ChooseGame = ()=>{
 
     const [quantity, setQuantity] = useState(10)
 
-    const [language, setLanguage] = useState('en')
+    const [language, setLanguage] = useState('es')
+
+    const [displayLang, setDisplayLang] = useState('Spanish')
 
     const changeNumber=(e)=>{
 
@@ -21,12 +23,18 @@ const ChooseGame = ()=>{
         setQuantity(number)
     }
 
+    const changeLanguageSetting = (opt) =>{
+
+        setLanguage(opt.value)
+        setDisplayLang(opt.label)
+    }
+
     const languageList = [
         {value:'en', label:'English'},
         {value:'es', label:'Spanish'},
         {value:'pt', label:'Portuguese'},
         {value: 'fr', label: 'French'},
-        {value: 'jp', label: 'Japanese'}
+        {value: 'ja', label: 'Japanese'}
     ]
 
 
@@ -35,7 +43,7 @@ const ChooseGame = ()=>{
         <div>
             <p>Select options then start</p>
             <button className="btn btn-primary myButton " onClick={()=>navigate('/play', 
-                { state: { language: language, number: quantity} })}>Start
+                { state: { language: language, number: quantity, displayLang: displayLang}})}>Start
             </button>
         </div>
 
@@ -62,14 +70,16 @@ const ChooseGame = ()=>{
                
         </div>
 
-        <Select style={{width: '500px'}} menuPortalTarget={document.body}
-                        defaultValue={
-                          'es'
-                        }
-                        options={languageList}
-                        isSearchable = {true}
-                        onChange={(opt)=>setLanguage(opt.value)}
-        />
+        <div style={{width:'200px'}}>
+            <Select menuPortalTarget={document.body}
+                            defaultValue={
+                            languageList[1]
+                            }
+                            options={languageList}
+                            isSearchable = {true}
+                            onChange={(opt)=>changeLanguageSetting(opt)}
+            />
+        </div>
     </div>
     )
 }
