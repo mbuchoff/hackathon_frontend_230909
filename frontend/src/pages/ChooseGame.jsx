@@ -2,6 +2,8 @@ import {useNavigate} from "react-router-dom"
 
 import { useState } from "react"
 
+import Select from 'react-select'
+
 import '../css/choose.css'
 
 const ChooseGame = ()=>{
@@ -10,6 +12,8 @@ const ChooseGame = ()=>{
 
     const [quantity, setQuantity] = useState(10)
 
+    const [language, setLanguage] = useState('English')
+
     const changeNumber=(e)=>{
 
         const number = parseInt(e.target.value)
@@ -17,13 +21,21 @@ const ChooseGame = ()=>{
         setQuantity(number)
     }
 
+    const languageList = [
+        {value:'en', label:'English'},
+        {value:'es', label:'Spanish'},
+        {value:'pt', label:'Portuguese'},
+        {value: 'fr', label: 'French'},
+        {value: 'jp', label: 'Japanese'}
+    ]
+
 
     return(
     <div className="flexChoose">
         <div>
             <p>Select options then start</p>
             <button className="btn btn-primary myButton " onClick={()=>navigate('/play', 
-                { state: { language: 'portugeuse', number: quantity} })}>Start
+                { state: { language: language, number: quantity} })}>Start
             </button>
         </div>
 
@@ -49,6 +61,15 @@ const ChooseGame = ()=>{
                 </label>
                
         </div>
+
+        <Select style={{width: '500px'}} menuPortalTarget={document.body}
+                        defaultValue={
+                          'en'
+                        }
+                        options={languageList}
+                        isSearchable = {true}
+                        onChange={(opt)=>setLanguage(opt.value)}
+        />
     </div>
     )
 }

@@ -15,14 +15,14 @@ const Play = ()=>{
 
     const [questionList, setQuestionList] = useState([
         {
-            original: 'walking',
+            question: 'walking',
             choices: ['hi', '2' , '3' , '4'],
-            answerIndex: 0,
+            answer: 0,
         },
         {
-            original: 'running',
+            question: 'running',
             choices: ['hi', '2' , '3' , '4'],
-            answerIndex: 1,
+            answer: 1,
         }
     ])
 
@@ -72,7 +72,7 @@ const Play = ()=>{
         if(endQuiz.current)
             return
 
-        if(choice !== questionList[index].answerIndex){
+        if(choice !== questionList[index].answer){
           setChosen(e.target.id)
           
         }
@@ -89,15 +89,20 @@ const Play = ()=>{
 
     const getGame =()=>{
 
-        const baseUrl = 'http://localhost:9999/sentences'
-        const request = axios.get(baseUrl
+        const baseUrl = 'http://localhost:9999/game'
 
+        const request = axios.post(baseUrl,
+            {
+                language: language,
+                quantity: numQuestions
+            }
         )
 
         request.then(response=>{
             if(response.status === 200){
                 setSuccess(true)
 
+                //setQuestionList(response.data.game_result.questions)
                 console.log(response.data)
               }
 
@@ -142,7 +147,7 @@ const Play = ()=>{
         <div className="questionBox">
 
             <div style={{fontSize: '1.25rem'}} className=''>
-                {questionList[index].original} 
+                {questionList[index].question} 
             </div>
 
             <div style={{fontSize: '1.25rem'}} className=" ">
@@ -155,16 +160,16 @@ const Play = ()=>{
         </div>
 
         <div id = "choice-container">
-                <button id="one" className = {(questionList[index].answerIndex === 0 && done === true)?  
+                <button id="one" className = {(questionList[index].answer === 0 && done === true)?  
                   "buttonTop right" :
                     chosen === "one"? "buttonTop wrong" : "buttonTop"} onClick={(e)=>wrongAnswer(e, 0)}>{questionList[index].choices[0]}</button>
-                <button id="two" className = {(questionList[index].answerIndex === 1 && done === true)?   
+                <button id="two" className = {(questionList[index].answer === 1 && done === true)?   
                   "buttonTop right" :
                     chosen === "two"? "buttonTop wrong" : "buttonTop"} onClick={(e)=>wrongAnswer(e, 1)}>{questionList[index].choices[1]}</button>
-                <button id ="three" className = {(questionList[index].answerIndex === 2 && done === true)? 
+                <button id ="three" className = {(questionList[index].answer === 2 && done === true)? 
                   "buttonTop right" :
                     chosen === "three"? "buttonTop wrong" : "buttonTop"} onClick={(e)=>wrongAnswer(e, 2)}>{questionList[index].choices[2]}</button>
-                <button id="four" className = {(questionList[index].answerIndex === 3 && done === true)? 
+                <button id="four" className = {(questionList[index].answer === 3 && done === true)? 
                   "buttonTop right" :
                     chosen === "four"? "buttonTop wrong" : "buttonTop"} onClick={(e)=>wrongAnswer(e, 3)}>{questionList[index].choices[3]}</button>
         </div>
