@@ -8,7 +8,7 @@
       markdownlint:
         uses: snohio/github-workflows/.github/workflows/markdown-lint.yml@main
       hadolint:
-        uses: actions/code-scanning/hadolint.yml@main
+        uses: actions/code-scanning//.github/workflows/hadolint.yml@main
 
       integration-azure:
         runs-on: ubuntu-latest
