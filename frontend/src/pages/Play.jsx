@@ -76,7 +76,7 @@ const Play = ()=>{
 
     const getGame =()=>{
 
-        const baseUrl = 'http://app-hackathon.azurewebsites.net/game'
+        const baseUrl = 'https://app-hackathon.azurewebsites.net/game'
 
         const request = axios.post(baseUrl,
             {
