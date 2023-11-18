@@ -31,7 +31,7 @@ function App() {
         
           <Navbar.Brand as={Link} to='/' className='logo' 
                 style={{ fontSize: '48px',textDecoration:'none', padding:'0'}}>
-                Sentence Match
+                Sentence match
           </Navbar.Brand>
 
           <Navbar.Toggle />
